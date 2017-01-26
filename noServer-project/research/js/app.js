@@ -9,11 +9,11 @@ var app = angular.module("app", ['ui.router'])
         .state('home', {
             url: '/',
             templateUrl: './views/home/home.html'
-        }),
+        })
         .state('navigation', {
             url: '/nav'
             templateUrl: './views/navigation/navTmpl.html'
-        }),
+        })
         .state('map', {
             url: '/map',
             templateUrl: './views/map/mapTmpl.html'
@@ -21,7 +21,7 @@ var app = angular.module("app", ['ui.router'])
         .state('wrong' {
             url: '/wrong',
             templateUrl: './views/wrongPage/wrongPage.html'
-        })
+        });
 
 
 
