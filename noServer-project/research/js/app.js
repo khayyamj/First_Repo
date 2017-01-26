@@ -3,20 +3,24 @@
 var app = angular.module("app", ['ui.router'])
 .config(function($stateProvider,$urlRouterProvider){
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/wrong');
 
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: 'home.html'
+            templateUrl: './views/home/home.html'
         }),
         .state('navigation', {
-            url: 'nav'
-            templateUrl: 'navTmpl.html'
+            url: '/nav'
+            templateUrl: './views/navigation/navTmpl.html'
         }),
         .state('map', {
-            url: 'map',
-            templateUrl: 'mapTmpl.html'
+            url: '/map',
+            templateUrl: './views/map/mapTmpl.html'
+        })
+        .state('wrong' {
+            url: '/wrong',
+            templateUrl: './views/wrongPage/wrongPage.html'
         })
 
 
