@@ -8,19 +8,19 @@ var app = angular.module("app", ['ui.router'])
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: './views/home/home.html'
+            templateUrl: './js/views/home/home.html'
         })
         .state('navigation', {
-            url: '/nav'
-            templateUrl: './views/navigation/navTmpl.html'
+            url: '/nav',
+            templateUrl: './js/views/navigation/navTmpl.html'
         })
         .state('map', {
             url: '/map',
-            templateUrl: './views/map/mapTmpl.html'
+            templateUrl: './js/views/map/mapTmpl.html'
         })
-        .state('wrong' {
+        .state('wrong', {
             url: '/wrong',
-            templateUrl: './views/wrongPage/wrongPage.html'
+            templateUrl: './js/views/wrongPage/wrongPage.html'
         });
 
 
