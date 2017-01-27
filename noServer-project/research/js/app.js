@@ -3,7 +3,6 @@
 var app = angular.module("app", ['ui.router'])
 .config(function($stateProvider,$urlRouterProvider){
 
-    $urlRouterProvider.otherwise('/wrong');
 
     $stateProvider
         .state('home', {
@@ -24,6 +23,7 @@ var app = angular.module("app", ['ui.router'])
         });
 
 
+        $urlRouterProvider.otherwise('/wrong');
 
 
 

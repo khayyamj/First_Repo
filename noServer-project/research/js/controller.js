@@ -1,6 +1,7 @@
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module("app").controller("mainCtrl", function($scope, collectionService) {
+angular.module("app")
+.controller("mainCtrl", function($scope, collectionService, apodService) {
   // VARIABLES
   // ============================================================
 
@@ -8,13 +9,17 @@ angular.module("app").controller("mainCtrl", function($scope, collectionService)
   // FUNCTIONS
   // ============================================================
 
-  $scope.getData = function() {
-  collectionService.getCollections()
-    .then(function(response) {
-        $scope.returnData = response;
-    });
-    }
-    $scope.getData();
 
+$scope.apodPic = function() {
+  apodService.getApodPic().then(function(response) {
+      $scope.podPic = response;
+      $scope.mainBackPicRef = 'url(' + $scope.podPic + ')';
+      console.log($scope.mainBackPicRef);
+  });
+};
+$scope.apodPic();
 
+$scope.style = apodService.backgroundStyle;
+
+        // end of controller
 });
