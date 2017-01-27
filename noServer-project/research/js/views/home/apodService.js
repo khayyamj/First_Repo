@@ -4,7 +4,8 @@ angular.module('app')
     this.getApodPic = function() {
         return $http({
             method: 'GET',
-            url: 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
+            // url: 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
+            url: ''  //temporary set-up to not over tax DEMO_KEY
         }).then(function(response) {
             this.backgroundUrl = response.data.url;
             return response.data.url;
