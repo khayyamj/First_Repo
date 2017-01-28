@@ -69,10 +69,11 @@ var broken = 'broken link'
           .then(function(GeoLocationResponse){
               // determine if weather is appropriate for indoor/outdoor activity
               // add information to personal data object
+//need to return something from this function
               self.getWeatherForcast(GeoLocationResponse)
                 .then(function(response) {
 console.log('getWeatherForcast returning: ', broken)
-                    return broken;
+
                 })  // end then getWeatherForcast function
 console.log('Response returning to controller: ', response);
             return broken;
