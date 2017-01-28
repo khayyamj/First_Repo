@@ -101,6 +101,7 @@ angular.module("app").service("collectionService", function ($http) {
             // url: ''  // to not run to many requests
         }).then(function (response) {
             self.currentWeather = response.data.current_observation;
+            console.log(self.currentWeather);
             return response.data.current_observation;
         }, function (error) {
             alert('Weather Request Data Error');
@@ -121,7 +122,7 @@ angular.module("app").service("collectionService", function ($http) {
             // add information to personal data object
             //need to return something from this function
             self.getWeatherForcast(GeoLocationResponse).then(function (response) {
-                console.log('getWeatherForcast returning: ', broken);
+                console.log('Last working spot...find lost return response after this point');
             }); // end then getWeatherForcast function
             console.log('Response returning to controller: ', response);
             return broken;

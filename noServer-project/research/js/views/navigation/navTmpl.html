@@ -1,46 +1,57 @@
-<h1>Navigation Page</h1>
-<a ui-sref='map'>Map Page</a> or <a ui-sref='home'>Home Page</a>
-
-<div class="weather-container">
-
-    <div class="weather-now">
-        {{currentWeather.weather}}
-    </div>
-
-    <div class="weather-main">
-
-        <div class="weather-left">
-            <img src="{{currentWeather.image.url}}" alt="{{currentWeather.weather}}">
-        </div>
-
-        <div class="weather-right">
-            {{currentWeather.temp_f}}
-        </div>
-
-        // end weather-main section
-    </div>
-
-    <div class="weather-lowerLeft">
-        {{currentWeather.precip_today_in}}<br>
-        {{currentWeather.pressure_in}}
-    </div>
-
-    <div class="weather-lowerRight">
-        {{currentWeather.wind_dir}}<br>
-        {{currentWeather.wind_mph}}
-    </div>
-
-
-        // end weather-container
-</div>
-
-<div class="navigation-mainContainer">
+<div class="page-wrapper">
 
 
 
+       <div class="weather-container">
 
-</div>
+           <div class="weather-now">
+               Clear
 
-<div class="navigation-footer">
-    <img src="{{currentWeather.image.url}}" alt="{{currentWeather.image.title}}">
-</div>
+           </div>
+
+           <div class="weather-main">
+
+               <div class="weather-left">
+                   <img src="http://icons.wxug.com/i/c/k/clear.gif" alt="Clear" class="forecast-pic">
+               </div>
+
+               <div class="weather-right">
+                   13.5 <sup>&#176</sup> F
+               </div>
+
+               <!-- end weather-main section -->
+           </div>
+
+           <div class="weather-lowerLeft">
+               Pressure: 30.99 <br>
+               Percipitation: 0 in.<br>
+               <img src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/3d-transparent-glass-icons-arrows/006775-3d-transparent-glass-icon-arrows-cut-arrow-down.png" alt="" class="pressure-arrow">
+           </div>
+
+           <div class="weather-lowerRight">
+               Wind: North<br>
+               0 mph
+           </div>
+
+
+               <!-- end weather-container -->
+       </div>
+
+       <div class="navigation-mainContainer">
+
+
+           Activity Content
+
+       </div>
+
+       <div class="navigation-footer">
+           <img src="http://icons.wxug.com/graphics/wu2/logo_130x80.png" alt="Weather Underground">
+       </div>
+
+
+
+
+
+
+           <!-- end page wrapper -->
+     </div>

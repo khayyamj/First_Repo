@@ -48,6 +48,7 @@ var broken = 'broken link'
             // url: ''  // to not run to many requests
         }).then(function(response) {
             self.currentWeather = response.data.current_observation;
+console.log(self.currentWeather);            
             return response.data.current_observation;
         }
         ,   function(error) {
