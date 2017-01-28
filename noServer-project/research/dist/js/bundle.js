@@ -43,9 +43,17 @@ angular.module("app").controller("mainCtrl", function ($scope, $state, collectio
     // navigation page FUNCTIONS
 
     $scope.start = function () {
-        collectionService.gatherData().then(function (response) {
+        console.log("Started getGeoLocation function...");
+        collectionService.getGeoLocation().then(function (response) {
+            console.log('starting collectionService function');
+            collectionService.getWeatherForcast(response);
+            console.log('completed getWeatherForcast function');
+            return response;
+        }).then(function (response) {
             console.log('Controller data returned: ', response);
             $state.go('navigation');
+        }).then(function (response) {
+            console.log('completed Start function cycle');
         });
     };
 
@@ -83,10 +91,8 @@ angular.module("app").service("collectionService", function ($http) {
     };
 
     self.getWeatherForcast = function (location) {
-
         // state string to lowercase
         var state = location.region.toLowerCase();
-
         // concat city string to first_middle_last format
         var city = '';
         var cityArr = location.city.split(' ');
@@ -185,6 +191,31 @@ angular.module('app').service('apodService', function ($http) {
 'use strict';
 
 angular.module('app').directive('bkgrdDir', function () {});
+'use strict';
+
+angular.module('app').directive('mapDir', function () {
+    return {
+        restrict: 'E',
+        template: '<div></div>',
+        replace: true,
+        link: function link(scope, element, attrs) {
+            var myLatLng = new google.maps.LatLng(40.2263, -111.6607);
+            var mapOptions = {
+                center: myLatLng,
+                zoom: 15,
+                mapTypeId: 'satellite'
+            };
+            var map = new google.maps.Map(document.getElementById(attrs.id), mapOptions);
+
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'You Are Here'
+            });
+            marker.setMap(map);
+        }
+    };
+});
 'use strict';
 
 angular.module('app').controller('navCtrl', function ($scope, collectionService) {

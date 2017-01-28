@@ -29,18 +29,15 @@ var broken = 'broken link'
     }
 
     self.getWeatherForcast = function (location) {
-
-// state string to lowercase
+            // state string to lowercase
         var state = location.region.toLowerCase();
-
-// concat city string to first_middle_last format
+            // concat city string to first_middle_last format
         var city = '';
         var cityArr = location.city.split(' ');
-        for(var i = 0; i < cityArr.length; i++) {
-            city = cityArr[i] + '_';
-        }
-        city = city.substr(0,city.length - 1);
-
+            for(var i = 0; i < cityArr.length; i++) {
+                city = cityArr[i] + '_';
+            }
+            city = city.substr(0,city.length - 1);
 
         return $http({
             method: 'GET',
@@ -48,7 +45,7 @@ var broken = 'broken link'
             // url: ''  // to not run to many requests
         }).then(function(response) {
             self.currentWeather = response.data.current_observation;
-console.log(self.currentWeather);            
+console.log(self.currentWeather);
             return response.data.current_observation;
         }
         ,   function(error) {
