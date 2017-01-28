@@ -11,19 +11,15 @@ var app = angular.module("app", ['ui.router'])
         })
         .state('navigation', {
             url: '/nav',
-            templateUrl: './js/views/navigation/navTmpl.html'
+            templateUrl: './js/views/navigation/navTmpl.html',
+            controller: 'navCtrl'
         })
         .state('map', {
             url: '/map',
             templateUrl: './js/views/map/mapTmpl.html'
-        })
-        .state('wrong', {
-            url: '/wrong',
-            templateUrl: './js/views/wrongPage/wrongPage.html'
         });
 
-
-        $urlRouterProvider.otherwise('/wrong');
+    $urlRouterProvider.otherwise('/');
 
 
 

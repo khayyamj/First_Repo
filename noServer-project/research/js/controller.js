@@ -1,7 +1,7 @@
 // INITILIZE CONTROLLER
 // ============================================================
 angular.module("app")
-.controller("mainCtrl", function($scope, collectionService, apodService) {
+.controller("mainCtrl", function($scope, $state, collectionService, apodService) {
   // VARIABLES
   // ============================================================
 
@@ -11,36 +11,26 @@ angular.module("app")
 
   // home page functions
 
-$scope.apodPic = function() {
-  apodService.getApodPic().then(function(response) {
-      $scope.podPic = response;
-      $scope.mainBackPicRef = 'url(' + $scope.podPic + ')';
-      console.log($scope.mainBackPicRef);
-  });
-};
-$scope.apodPic();
-
 $scope.style = apodService.backgroundStyle;
+$scope.getbackground = function(){
+    apodService.getApodPic().then(function(response) {
+        $scope.style = response;
+    })
+};
+$scope.getbackground();
 
 
 
     // navigation page FUNCTIONS
 
 $scope.start = function () {
-    collectionService.getGeoLocation()
-    .then(function(response) {  //get geoLocation
-        $scope.geoLocation = response;
-        console.log('geoLocation data: ', $scope.geoLocation);
-    })
-    .then(function(response) {  //find weather at current location
-        collectionService.getWeatherForcast()
+    collectionService.gatherData()
         .then(function(response) {
-            $scope.weatherForcast = response;
-            console.log('Weather Forcast Data: ', $scope.weatherForcast);
-        })
-    })
+            console.log('Controller data returned: ', response);
+            $state.go('navigation');
 
-}
+        })
+    }
 
 
 
