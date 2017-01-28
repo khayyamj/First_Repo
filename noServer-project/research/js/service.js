@@ -72,7 +72,7 @@ var broken = 'broken link'
 //need to return something from this function
               self.getWeatherForcast(GeoLocationResponse)
                 .then(function(response) {
-console.log('getWeatherForcast returning: ', broken)
+console.log('Last working spot...find lost return response after this point')
 
                 })  // end then getWeatherForcast function
 console.log('Response returning to controller: ', response);
