@@ -66,6 +66,8 @@ angular.module("app").service("collectionService", function ($http) {
     this.apiOpenWeatherMap = 'c94e2f8cb7f535e349c15a0ddb7c8a8e';
     this.apiWeatherUnderground = 'd91bd8a3ab96a8cb';
 
+    var broken = 'broken link';
+
     // START FUNCTIONS
     // ============================================================
 
@@ -98,7 +100,6 @@ angular.module("app").service("collectionService", function ($http) {
             url: 'http://api.wunderground.com/api/d91bd8a3ab96a8cb/conditions/q/' + state + '/' + city + '.json'
             // url: ''  // to not run to many requests
         }).then(function (response) {
-            console.log(response.data.current_observation);
             self.currentWeather = response.data.current_observation;
             return response.data.current_observation;
         }, function (error) {
@@ -111,21 +112,20 @@ angular.module("app").service("collectionService", function ($http) {
     // ============================================================
 
     self.gatherData = function () {
-        self.getGeoLocation().then(function (response) {
-            return response;
-            // format response for next function
-            // build personal data object
-            // adjust city information to work with weather api call
-        }).then(function (GeoLocationResponse) {
+        self.getGeoLocation().then(function (locationResponse) {
+            return locationResponse;
+        }) // end of then locationResponse
 
-            // use location to get current weather forecast
+        .then(function (GeoLocationResponse) {
             // determine if weather is appropriate for indoor/outdoor activity
             // add information to personal data object
             self.getWeatherForcast(GeoLocationResponse).then(function (response) {
-                return response;
-            });
-        });
-        return response;
+                console.log('getWeatherForcast returning: ', broken);
+                return broken;
+            }); // end then getWeatherForcast function
+            console.log('Response returning to controller: ', response);
+            return broken;
+        }); // end then GeoLocationResponse
     };
 
     //end of service
