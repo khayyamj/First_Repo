@@ -5,6 +5,7 @@ angular.module('app')
         template: '<div></div>',
         replace: true,
         link: function(scope, element, attrs) {
+            console.log('mapDir is now working');
             var myLatLng = new google.maps.LatLng(40.2263, -111.6607);
             var mapOptions = {
                 center: myLatLng,

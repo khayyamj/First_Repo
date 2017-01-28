@@ -43,18 +43,12 @@ angular.module("app").controller("mainCtrl", function ($scope, $state, collectio
     // navigation page FUNCTIONS
 
     $scope.start = function () {
-        console.log("Started getGeoLocation function...");
         collectionService.getGeoLocation().then(function (response) {
-            console.log('starting collectionService function');
             collectionService.getWeatherForcast(response);
-            console.log('completed getWeatherForcast function');
             return response;
         }).then(function (response) {
-            console.log('Controller data returned: ', response);
             $state.go('navigation');
-        }).then(function (response) {
-            console.log('completed Start function cycle');
-        });
+        }).then(function (response) {});
     };
 
     // end of controller
@@ -73,8 +67,6 @@ angular.module("app").service("collectionService", function ($http) {
     this.apiNASA = '6bYPFTSlZLuHqruzDWBUaXpZhZDhD6YinK3Um7ve';
     this.apiOpenWeatherMap = 'c94e2f8cb7f535e349c15a0ddb7c8a8e';
     this.apiWeatherUnderground = 'd91bd8a3ab96a8cb';
-
-    var broken = 'broken link';
 
     // START FUNCTIONS
     // ============================================================
@@ -107,7 +99,6 @@ angular.module("app").service("collectionService", function ($http) {
             // url: ''  // to not run to many requests
         }).then(function (response) {
             self.currentWeather = response.data.current_observation;
-            console.log(self.currentWeather);
             return response.data.current_observation;
         }, function (error) {
             alert('Weather Request Data Error');
@@ -118,22 +109,6 @@ angular.module("app").service("collectionService", function ($http) {
     // OTHER FUNCTIONS
     // ============================================================
 
-    self.gatherData = function () {
-        self.getGeoLocation().then(function (locationResponse) {
-            return locationResponse;
-        }) // end of then locationResponse
-
-        .then(function (GeoLocationResponse) {
-            // determine if weather is appropriate for indoor/outdoor activity
-            // add information to personal data object
-            //need to return something from this function
-            self.getWeatherForcast(GeoLocationResponse).then(function (response) {
-                console.log('Last working spot...find lost return response after this point');
-            }); // end then getWeatherForcast function
-            console.log('Response returning to controller: ', response);
-            return broken;
-        }); // end then GeoLocationResponse
-    };
 
     //end of service
 });
@@ -199,6 +174,7 @@ angular.module('app').directive('mapDir', function () {
         template: '<div></div>',
         replace: true,
         link: function link(scope, element, attrs) {
+            console.log('mapDir is now working');
             var myLatLng = new google.maps.LatLng(40.2263, -111.6607);
             var mapOptions = {
                 center: myLatLng,
@@ -218,13 +194,17 @@ angular.module('app').directive('mapDir', function () {
 });
 'use strict';
 
-angular.module('app').controller('navCtrl', function ($scope, collectionService) {
+angular.module('app').controller('navCtrl', function ($scope, collectionService, $state) {
 
     $scope.personData = collectionService.personData;
     $scope.currentWeather = collectionService.currentWeather;
 
     console.log("navCtrl is now active");
-    console.log('personData: ', $scope.personData);
     console.log('currentWeather: ', $scope.currentWeather);
+
+    $scope.gotoMap = function () {
+        console.log('goto Map button clicked');
+        $state.go('map');
+    };
 });
 //# sourceMappingURL=bundle.js.map
