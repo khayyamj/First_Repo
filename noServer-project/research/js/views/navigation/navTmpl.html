@@ -25,7 +25,7 @@
            <div class="weather-lowerLeft">
                Pressure: {{currentWeather.pressure_in}} <br>
                Percipitation: {{currentWeather.precip_today_in}} in.<br>
-               <img src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/3d-transparent-glass-icons-arrows/006775-3d-transparent-glass-icon-arrows-cut-arrow-down.png" alt="" class="pressure-arrow">
+               <img arrow-dir src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/3d-transparent-glass-icons-arrows/006775-3d-transparent-glass-icon-arrows-cut-arrow-down.png" class="pressure-arrow"  pressure='currentWeather.pressure_trend'>
            </div>
 
            <div class="weather-lowerRight">
@@ -41,6 +41,9 @@
 
 
            <button type="button" ng-click='gotoMap()'>Current Location</button>
+
+
+
 
        </div>
 

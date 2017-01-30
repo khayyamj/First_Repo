@@ -4,8 +4,6 @@ angular.module('app')
 var setVars = function() {
     $scope.personData = collectionService.personData;
     $scope.currentWeather = collectionService.currentWeather;
-    console.log('self-invocing function worked, assigned variables');
-    console.log('navCtrl currentWeather: ', $scope.currentWeather);
 }();
 
 

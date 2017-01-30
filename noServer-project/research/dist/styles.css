@@ -61,7 +61,8 @@
 
 .pressure-arrow {
   width: 10px;
-  height: 20px; }
+  height: 20px;
+  transform: rotateX(180deg); }
 
 .weather-lowerRight {
   width: 49%;
