@@ -6,9 +6,10 @@ angular.module('app')
             pressure: '='
         },
         link: function (scope, elem, attrs) {
-            console.log('scope.pressure: ', scope.pressure);
             if (scope.pressure === '-') {
-                attrs.css ('transform', 'rotateX(180deg)')
+                elem.css({
+                    'transform': 'rotateX(0deg)'
+                })
             }
         }
     }

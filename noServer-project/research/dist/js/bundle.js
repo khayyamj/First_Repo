@@ -205,9 +205,10 @@ angular.module('app').directive('arrowDir', function () {
             pressure: '='
         },
         link: function link(scope, elem, attrs) {
-            console.log('scope.pressure: ', scope.pressure);
             if (scope.pressure === '-') {
-                attrs.css('transform', 'rotateX(180deg)');
+                elem.css({
+                    'transform': 'rotateX(0deg)'
+                });
             }
         }
     };
