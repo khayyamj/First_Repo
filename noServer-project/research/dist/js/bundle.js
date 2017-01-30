@@ -44,10 +44,14 @@ angular.module("app").controller("mainCtrl", function ($scope, $state, collectio
 
     $scope.start = function () {
         collectionService.getGeoLocation().then(function (response) {
-            collectionService.getWeatherForcast(response);
+            $scope.personData = collectionService.personData;
+            console.log('**Step 2** returned $scope.personData: ', $scope.personData, '****');
+            collectionService.getWeatherForcast(response).then(function (response) {
+                $scope.currentWeather = collectionService.currentWeather;
+                console.log("**Step 4** returned $scope.currentWeather: ", $scope.currentWeather);
+                $state.go('navigation');
+            });
             return response;
-        }).then(function (response) {
-            $state.go('navigation');
         }).then(function (response) {});
     };
 
@@ -78,6 +82,7 @@ angular.module("app").service("collectionService", function ($http) {
             url: 'http://ip-api.com/json'
         }).then(function (response) {
             self.personData = response.data;
+            console.log("**Step 1** getGeoLocation assigned self.personData: ", self.personData);
             return response.data;
         });
     };
@@ -99,6 +104,7 @@ angular.module("app").service("collectionService", function ($http) {
             // url: ''  // to not run to many requests
         }).then(function (response) {
             self.currentWeather = response.data.current_observation;
+            console.log('**Step 3 ** getWeatherForcast assigned self.currentWeather: ', self.currentWeather);
             return response.data.current_observation;
         }, function (error) {
             alert('Weather Request Data Error');
@@ -173,8 +179,11 @@ angular.module('app').directive('mapDir', function () {
         restrict: 'E',
         template: '<div></div>',
         replace: true,
+        scope: {
+            personData: '='
+        },
         link: function link(scope, element, attrs) {
-            console.log('mapDir is now working');
+            console.log("Scope: ", scope);
             var myLatLng = new google.maps.LatLng(40.2263, -111.6607);
             var mapOptions = {
                 center: myLatLng,
@@ -196,14 +205,14 @@ angular.module('app').directive('mapDir', function () {
 
 angular.module('app').controller('navCtrl', function ($scope, collectionService, $state) {
 
-    $scope.personData = collectionService.personData;
-    $scope.currentWeather = collectionService.currentWeather;
-
-    console.log("navCtrl is now active");
-    console.log('currentWeather: ', $scope.currentWeather);
+    var setVars = function () {
+        $scope.personData = collectionService.personData;
+        $scope.currentWeather = collectionService.currentWeather;
+        console.log('self-invocing function worked, assigned variables');
+        console.log('navCtrl currentWeather: ', $scope.currentWeather);
+    }();
 
     $scope.gotoMap = function () {
-        console.log('goto Map button clicked');
         $state.go('map');
     };
 });

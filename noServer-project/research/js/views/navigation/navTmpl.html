@@ -5,32 +5,32 @@
        <div class="weather-container">
 
            <div class="weather-now">
-               Clear
+               {{currentWeather.weather}}
 
            </div>
 
            <div class="weather-main">
 
                <div class="weather-left">
-                   <img src="http://icons.wxug.com/i/c/k/clear.gif" alt="Clear" class="forecast-pic">
+                   <img src="{{currentWeather.icon_url}}" alt="Clear" class="{{currentWeather.weather}}">
                </div>
 
                <div class="weather-right">
-                   13.5 <sup>&#176</sup> F
+                   {{currentWeather.temp_f}} <sup>&#176</sup> F
                </div>
 
                <!-- end weather-main section -->
            </div>
 
            <div class="weather-lowerLeft">
-               Pressure: 30.99 <br>
-               Percipitation: 0 in.<br>
+               Pressure: {{currentWeather.pressure_in}} <br>
+               Percipitation: {{currentWeather.precip_today_in}} in.<br>
                <img src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/3d-transparent-glass-icons-arrows/006775-3d-transparent-glass-icon-arrows-cut-arrow-down.png" alt="" class="pressure-arrow">
            </div>
 
            <div class="weather-lowerRight">
-               Wind: North<br>
-               0 mph
+               Wind: {{currentWeather.wind_dir}}<br>
+               {{currentWeather.wind_mph}} mph
            </div>
 
 
@@ -39,8 +39,8 @@
 
        <div class="navigation-mainContainer">
 
-           Activity Content <br />
-           <button type="button" ng-click='gotoMap()'>MVP</button>
+
+           <button type="button" ng-click='gotoMap()'>Current Location</button>
 
        </div>
 

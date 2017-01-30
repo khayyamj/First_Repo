@@ -23,6 +23,7 @@ angular.module("app").service("collectionService", function($http) {
             url: 'http://ip-api.com/json'
         }).then (function(response) {
             self.personData = response.data;
+            console.log("**Step 1** getGeoLocation assigned self.personData: ",self.personData);
             return response.data;
         })
     }
@@ -44,6 +45,7 @@ angular.module("app").service("collectionService", function($http) {
             // url: ''  // to not run to many requests
         }).then(function(response) {
             self.currentWeather = response.data.current_observation;
+            console.log('**Step 3 ** getWeatherForcast assigned self.currentWeather: ', self.currentWeather);
             return response.data.current_observation;
         }
         ,   function(error) {

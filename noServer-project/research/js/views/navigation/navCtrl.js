@@ -1,14 +1,15 @@
 angular.module('app')
 .controller('navCtrl', function($scope, collectionService, $state) {
 
+var setVars = function() {
     $scope.personData = collectionService.personData;
     $scope.currentWeather = collectionService.currentWeather;
+    console.log('self-invocing function worked, assigned variables');
+    console.log('navCtrl currentWeather: ', $scope.currentWeather);
+}();
 
-console.log("navCtrl is now active");
-console.log('currentWeather: ', $scope.currentWeather);
 
     $scope.gotoMap = function() {
-        console.log('goto Map button clicked');
         $state.go('map');
     }
 

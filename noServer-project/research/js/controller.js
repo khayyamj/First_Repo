@@ -6,6 +6,7 @@ angular.module("app")
   // ============================================================
 
 
+
   // FUNCTIONS
   // ============================================================
 
@@ -26,12 +27,17 @@ $scope.getbackground();
 $scope.start = function () {
     collectionService.getGeoLocation()
         .then(function(response){
+            $scope.personData = collectionService.personData;
+            console.log ('**Step 2** returned $scope.personData: ',$scope.personData, '****');
             collectionService.getWeatherForcast(response)
+                .then(function(response) {
+                    $scope.currentWeather = collectionService.currentWeather;
+                    console.log("**Step 4** returned $scope.currentWeather: ",$scope.currentWeather);
+                        $state.go('navigation');
+                    })
                 return response;
             })
-        .then(function(response) {
-                $state.go('navigation');
-            })
+
         .then(function(response) {
         })
     }

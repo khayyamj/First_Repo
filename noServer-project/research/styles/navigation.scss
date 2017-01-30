@@ -1,3 +1,6 @@
+$pressure: 0
+@function pressureDirection()
+
 * {
     box-sizing: border-box;
     font-family: 'Ultra', serif;
@@ -67,6 +70,8 @@
 .pressure-arrow {
     width: 10px;
     height: 20px;
+
+
 }
 .weather-lowerRight {
     width: 49%;

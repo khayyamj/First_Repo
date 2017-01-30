@@ -1,7 +1,6 @@
 #map {
   height: 400px;
-  width: 600px;
-  border: 2px solid blue; }
+  width: 600px; }
 
 * {
   box-sizing: border-box;
