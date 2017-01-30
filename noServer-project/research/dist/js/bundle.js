@@ -184,7 +184,7 @@ angular.module('app').directive('mapDir', function () {
         },
         link: function link(scope, element, attrs) {
             console.log("Scope: ", scope);
-            var myLatLng = new google.maps.LatLng(40.2263, -111.6607);
+            var myLatLng = new google.maps.LatLng(scope.personData.lat, scope.personData.lon);
             var mapOptions = {
                 center: myLatLng,
                 zoom: 15,
